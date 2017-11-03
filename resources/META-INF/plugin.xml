@@ -32,6 +32,7 @@
     But Intellij shows me that it does not find those classes.
     That's why there is so much duplication :/
   -->
+  <!-- Todo: Use this gradle boilerplate: https://github.com/jansorg/intellij-plugin-base -->
 
   <actions>
     <action id="MoveAction"
