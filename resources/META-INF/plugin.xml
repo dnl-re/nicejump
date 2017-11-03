@@ -1,6 +1,6 @@
 <idea-plugin>
   <id>re.dnl.nicejump</id>
-  <name>YAJP - Yet Another Jump Plugin</name>
+  <name>Nice Jump</name>
   <version>0.1</version>
 
   <description><![CDATA[
@@ -26,14 +26,41 @@
     <!-- Add your extensions here -->
   </extensions>
 
+
+  <!-- Todo: somehow i can't extract into classes or even use new classes
+    I would like to make a BaseAction and every other action extends that class.
+    But Intellij shows me that it does not find those classes.
+    That's why there is so much duplication :/
+  -->
+
   <actions>
-    <!-- Add your actions here -->
     <action id="MoveAction"
             class="niceJump.src.re.dnl.nicejump.MoveAction"
             text="Nice Jump"
             description="Search and navigate to result">
       <keyboard-shortcut keymap="$default"
-                         first-keystroke="ctrl COMMA"/>
+                         first-keystroke="ctrl COMMA" second-keystroke="M"/>
+    </action>
+    <action id="MoveBackwardAction"
+            class="niceJump.src.re.dnl.nicejump.MoveBackwardAction"
+            text="Nice Jump"
+            description="Search and navigate to result">
+      <keyboard-shortcut keymap="$default"
+                         first-keystroke="ctrl shift COMMA" second-keystroke="M"/>
+    </action>
+    <action id="SelectAction"
+            class="niceJump.src.re.dnl.nicejump.SelectAction"
+            text="Nice Jump"
+            description="Search and navigate to result">
+      <keyboard-shortcut keymap="$default"
+                         first-keystroke="ctrl COMMA" second-keystroke="S"/>
+    </action>
+    <action id="SelectBackwardAction"
+            class="niceJump.src.re.dnl.nicejump.SelectBackwardAction"
+            text="Nice Jump"
+            description="Search and navigate to result">
+      <keyboard-shortcut keymap="$default"
+                         first-keystroke="ctrl shift COMMA" second-keystroke="S"/>
     </action>
 
   </actions>

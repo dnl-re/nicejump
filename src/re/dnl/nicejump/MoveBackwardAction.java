@@ -14,7 +14,7 @@ import com.intellij.openapi.editor.impl.FoldingModelImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 
-public class MoveAction extends AnAction {
+public class MoveBackwardAction extends AnAction {
 
   protected Project project;
   protected Editor editor;
@@ -49,7 +49,7 @@ public class MoveAction extends AnAction {
       FindResult result = findManager.findString(
         document.getCharsSequence(),
         caretModel.getOffset(),
-        createFindModel(searchText, true));
+        createFindModel(searchText, false));
 
       performCaretAction(result);
     }

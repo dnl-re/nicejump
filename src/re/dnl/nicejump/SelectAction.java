@@ -9,12 +9,13 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.editor.impl.DocumentImpl;
 import com.intellij.openapi.editor.impl.FoldingModelImpl;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 
-public class MoveAction extends AnAction {
+public class SelectAction extends AnAction {
 
   protected Project project;
   protected Editor editor;
@@ -23,6 +24,7 @@ public class MoveAction extends AnAction {
   protected DocumentImpl document;
   protected FoldingModelImpl foldingModel;
   protected CaretModel caretModel;
+  protected SelectionModel selectionModel;
 
   @Override
   public void update(AnActionEvent e) {
@@ -38,6 +40,7 @@ public class MoveAction extends AnAction {
     foldingModel = (FoldingModelImpl)editor.getFoldingModel();
     caretModel = editor.getCaretModel();
     findManager = FindManager.getInstance(project);
+    selectionModel = editor.getSelectionModel();
   }
 
   @Override
@@ -56,7 +59,7 @@ public class MoveAction extends AnAction {
   }
 
   private void performCaretAction(FindResult result) {
-    caretModel.moveToOffset(result.getStartOffset());
+    selectionModel.setSelection(caretModel.getOffset(), result.getEndOffset());
   }
 
   private FindModel createFindModel(String searchText, boolean searchForward) {
